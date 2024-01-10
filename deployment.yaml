@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sentiment_analysis
+spec:
+  selector:
+    matchLabels:
+      app: sentiment_analysis
+  template:
+    metadata:
+      labels:
+        app: sentiment_analysis
+    spec:
+      containers:
+      - name: sentiment_analysis
+        image: sentiment_analysis:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 6234
